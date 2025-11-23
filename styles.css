@@ -152,7 +152,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* --- 【新增】折疊選單 (Accordion) 樣式 --- */
+/* --- 折疊選單 (Accordion) 樣式 --- */
 .toggle-item {
     margin-top: 8px;
     border: 1px solid #eee;
@@ -190,7 +190,30 @@ h1 {
     color: #555;
     font-size: 0.9em;
 }
-/* --- 結束折疊選單樣式 --- */
+
+/* --- 【新增】購物清單表格樣式 --- */
+.shopping-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+.shopping-table th, .shopping-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em;
+}
+.shopping-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+.shopping-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.shopping-table tr:hover {
+    background-color: #f1f1f1;
+}
 
 
 /* 連結樣式 */
