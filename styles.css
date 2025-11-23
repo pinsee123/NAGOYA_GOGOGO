@@ -35,12 +35,33 @@ h2 {
     
     /* 確保文字在圖片上清晰可見 */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    
+    /* 修正點：使用 Flexbox 來更好地對齊三行內容 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 1. 日期點選 (置頂) */
+.date-info {
+    font-size: 1.4em; /* 放大日期 */
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+/* 2. 天氣/地點連結 (居中) */
+.hero-location-link {
+    text-decoration: none; /* 移除預設連結底線 */
+    color: inherit;
+    margin-bottom: 10px;
 }
 .location-info {
-    font-size: 1.1em;
-    margin-bottom: 5px;
+    font-size: 1.2em; /* 放大天氣 */
     font-weight: bold;
 }
+
+/* 3. 每日詳細內容/標題 (置底) */
 h1 {
     font-size: 1.5em;
     margin: 0;
@@ -127,9 +148,9 @@ h1 {
     cursor: pointer;
 }
 
-/* 新增：地下鐵時刻表連結樣式 */
+/* 地下鐵時刻表連結樣式 */
 .subway-link {
-    color: #007bff; /* 使用主題藍色 */
+    color: #007bff;
     font-weight: 600;
     text-decoration: underline;
 }
