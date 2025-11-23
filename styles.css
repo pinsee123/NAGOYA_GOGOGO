@@ -3,10 +3,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6; /* 輕微的背景色 */
-    padding-bottom: 60px; /* 為底部導航欄留出空間 */
+    background-color: #f4f7f6;
+    padding-bottom: 60px;
     color: #333;
-    -webkit-overflow-scrolling: touch; /* 提升 iOS 滑動流暢度 */
+    -webkit-overflow-scrolling: touch;
 }
 h2 {
     font-size: 1.3em;
@@ -16,9 +16,14 @@ h2 {
     padding-bottom: 5px;
 }
 
+/* 新增：用於隱藏非當前顯示的內容 */
+.hidden {
+    display: none !important;
+}
+
 /* 頂部 Hero Section */
 .hero-section {
-    background-color: #007bff; /* 主題藍色 */
+    background-color: #007bff;
     color: white;
     padding: 40px 20px 20px;
     text-align: center;
@@ -39,14 +44,14 @@ h1 {
 .timeline-container {
     padding: 0 10px;
     position: relative;
-    max-width: 600px; /* 限制寬度，優化閱讀 */
+    max-width: 600px;
     margin: 0 auto;
 }
 .timeline-container::before {
     content: '';
     position: absolute;
-    top: 55px; /* 調整起始位置 */
-    left: 45px; /* 垂直線的位置 */
+    top: 55px;
+    left: 45px;
     width: 3px;
     height: calc(100% - 70px);
     background: #ccc;
@@ -90,7 +95,7 @@ h1 {
     margin-left: 30px;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 增加陰影讓卡片更突出 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 .card-title {
@@ -101,14 +106,14 @@ h1 {
 .map-link {
     display: block;
     margin-top: 10px;
-    color: #28a745; /* 綠色，代表導航/Google */
+    color: #28a745;
     text-decoration: none;
     font-weight: 500;
 }
 
 /* 互動元素 */
 .action-link {
-    color: #ffc107; /* 橙色，突出可點擊 */
+    color: #ffc107;
     font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
@@ -125,7 +130,7 @@ h1 {
     background-color: white;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
     z-index: 100;
-    padding: 5px 0 env(safe-area-inset-bottom); /* 考慮 iPhone 底部安全區 */
+    padding: 5px 0 env(safe-area-inset-bottom);
 }
 .nav-item {
     flex: 1;
@@ -142,7 +147,7 @@ h1 {
 
 /* Modal 彈窗 */
 .modal {
-    display: none; /* 預設隱藏 */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -150,11 +155,11 @@ h1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    overflow: hidden; /* 防止背景滾動 */
+    overflow: hidden;
 }
 .modal.active {
     display: flex;
-    align-items: flex-end; /* 從底部彈出 */
+    align-items: flex-end;
 }
 .modal-content {
     background-color: #fefefe;
@@ -163,10 +168,10 @@ h1 {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
-    max-height: 90%; /* 限制最大高度，方便滑動查看長內容 */
+    max-height: 90%;
     overflow-y: auto;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease-out; /* 底部滑入動畫 */
+    animation: slideUp 0.3s ease-out;
 }
 .modal-content h3 {
     margin-top: 0;
@@ -176,7 +181,7 @@ h1 {
 .close-modal-btn {
     margin-top: 20px;
     padding: 12px 20px;
-    background-color: #dc3545; /* 紅色，強調關閉動作 */
+    background-color: #dc3545;
     color: white;
     border: none;
     border-radius: 8px;
