@@ -23,7 +23,7 @@ h2 {
 
 /* 頂部 Hero Section - 修正點：已加入楓葉背景圖片 */
 .hero-section {
-    background-image: url('images/maple_background.jpg'); /* 圖片路徑 */
+    background-image: url('images/maple_background2.jpg'); /* 圖片路徑 */
     background-size: cover;
     background-position: center;
     min-height: 180px; 
