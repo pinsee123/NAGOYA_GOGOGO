@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f7f6;
-    padding-bottom: 60px;
+    padding-bottom: 0; /* 移除底部空間 */
     color: #333;
     -webkit-overflow-scrolling: touch;
 }
@@ -21,56 +21,84 @@ h2 {
     display: none !important;
 }
 
-/* 頂部 Hero Section - 修正點：已加入楓葉背景圖片 */
+/* 頂部 Hero Section - 【設計核心：深色背景，移除圖片，使用 Flexbox】 */
 .hero-section {
-    background-image: url('images/maple_background2.jpg'); /* 圖片路徑 */
-    background-size: cover;
-    background-position: center;
-    min-height: 180px; 
-    
+    background-color: #3A004D; /* 參考圖中的深色/酒紅色 */
     color: white;
-    padding: 40px 20px 20px;
+    padding: 20px 20px 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* 確保文字在圖片上清晰可見 */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+    /* 確保文字在深色背景上清晰可見 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); 
     
-    /* 修正點：使用 Flexbox 來更好地對齊三行內容 */
+    /* 使用 Flexbox 堆疊內容 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
-/* 1. 日期點選 (置頂) */
+/* 1. 日期點選 (置頂 - 放大) */
 .date-info {
-    font-size: 1.4em; /* 放大日期 */
+    font-size: 1.6em; 
     font-weight: 800;
     margin-bottom: 15px;
 }
 
-/* 2. 天氣/地點連結 (居中) */
+/* 2. 天氣/地點連結 (居中 - 突顯天氣資訊) */
 .hero-location-link {
-    text-decoration: none; /* 移除預設連結底線 */
+    text-decoration: none; 
     color: inherit;
     margin-bottom: 10px;
+    font-size: 1.1em;
 }
 .location-info {
-    font-size: 1.2em; /* 放大天氣 */
     font-weight: bold;
 }
 
 /* 3. 每日詳細內容/標題 (置底) */
 h1 {
-    font-size: 1.5em;
-    margin: 0;
+    font-size: 1.3em; /* 略小，讓日期更突出 */
+    margin: 0 0 15px 0;
     font-weight: 600;
 }
 
+
+/* 【關鍵修正】：頂部橫向導航標籤 */
+.top-nav-tabs {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto; /* 允許橫向滑動 */
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+}
+.top-nav-tabs .nav-item {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 8px 15px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px; /* 圓角膠囊樣式 */
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+.top-nav-tabs .nav-item.active {
+    background-color: #E33845; /* 紅色高亮，參考圖中 Day 2 樣式 */
+    border-color: #E33845;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+
 /* Smart Timeline 容器與垂直線 */
 .timeline-container {
-    padding: 0 10px;
+    padding: 20px 10px;
     position: relative;
     max-width: 600px;
     margin: 0 auto;
@@ -84,12 +112,6 @@ h1 {
     height: calc(100% - 70px);
     background: #ccc;
     z-index: 1;
-}
-
-/* 單個時間軸項目 */
-.timeline-item {
-    display: flex;
-    margin-bottom: 30px;
 }
 
 /* 左側時間標籤 */
@@ -115,7 +137,7 @@ h1 {
     box-shadow: 0 0 0 2px #007bff;
 }
 
-/* 右側活動卡片 */
+/* 右側活動卡片 (樣式保持不變) */
 .timeline-card {
     background: white;
     flex-grow: 1;
@@ -131,7 +153,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Google Map 導航連結 */
+/* 連結樣式 (保持不變) */
 .map-link {
     display: block;
     margin-top: 10px;
@@ -139,16 +161,12 @@ h1 {
     text-decoration: none;
     font-weight: 500;
 }
-
-/* 互動元素 - Modal 觸發器 */
 .action-link {
     color: #ffc107;
     font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
 }
-
-/* 地下鐵時刻表連結樣式 */
 .subway-link {
     color: #007bff;
     font-weight: 600;
@@ -156,33 +174,7 @@ h1 {
 }
 
 
-/* 底部導航欄 */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-    background-color: white;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
-    z-index: 100;
-    padding: 5px 0 env(safe-area-inset-bottom);
-}
-.nav-item {
-    flex: 1;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    color: #6c757d;
-    font-size: 0.8em;
-}
-.nav-item.active {
-    color: #007bff;
-    font-weight: bold;
-}
-
-/* Modal 彈窗 */
+/* Modal 彈窗 (保持不變) */
 .modal {
     display: none;
     position: fixed;
@@ -210,11 +202,6 @@ h1 {
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.3s ease-out;
 }
-.modal-content h3 {
-    margin-top: 0;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
 .close-modal-btn {
     margin-top: 20px;
     padding: 12px 20px;
@@ -226,7 +213,6 @@ h1 {
     width: 100%;
     font-weight: bold;
 }
-
 @keyframes slideUp {
     from { transform: translateY(100%); opacity: 0.8; }
     to { transform: translateY(0); opacity: 1; }
