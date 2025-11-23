@@ -9,7 +9,7 @@
 <body>
 
     <header class="hero-section">
-        <div class="date-info">📅 DAY 1 / 11月24日</div>
+        <div class="date-info">📅 DAY 1 | 11月24日</div>
         <div class="location-info">
             📍 名古屋市 ☀️ 15°C
         </div>
@@ -17,58 +17,68 @@
     </header>
 
     <main class="timeline-container">
-        <h2>今日行程：犬山城</h2>
         
-        <section class="timeline-item">
-            <div class="timeline-time">12:00</div>
-            <div class="timeline-card">
-                <div class="card-title">🚄 名古屋機場到名古屋駅</div>
-                <p>
-                    搭乘名鐵電車。<br>
-                    <strong>交通資訊：</strong><span class="action-link" data-modal="route-modal">點擊查看三種路線詳情</span>
-                </p>
-                <a href="http://maps.google.com/?q=名古屋駅" target="_blank" class="map-link">
-                    <span role="img" aria-label="map-pin">🗺️</span> 名古屋駅導航
-                </a>
-            </div>
-        </section>
+        <div id="day-1" class="day-content">
+            <h2>今日行程：犬山城</h2>
+            
+            <section class="timeline-item">
+                <div class="timeline-time">12:00</div>
+                <div class="timeline-card">
+                    <div class="card-title">🚄 名古屋機場到名古屋駅</div>
+                    <p>
+                        搭乘名鐵電車。<br>
+                        <strong>交通資訊：</strong><span class="action-link" data-modal="route-modal">點擊查看三種路線詳情</span>
+                    </p>
+                    <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" class="map-link">
+                        <span role="img" aria-label="map-pin">🗺️</span> 名古屋駅導航
+                    </a>
+                </div>
+            </section>
 
-        <section class="timeline-item">
-            <div class="timeline-time">14:00</div>
-            <div class="timeline-card">
-                <div class="card-title">🏯 犬山城與犬山城下町</div>
-                <p>
-                    重要備註：門票為 11:00 ~ 17:00 時段。<br>
-                    **住宿：** <span class="action-link" data-modal="hotel-modal">INDIGO 飯店</span>
-                </p>
-                <a href="http://maps.google.com/?q=犬山城" target="_blank" class="map-link">
-                    <span role="img" aria-label="map-pin">🗺️</span> 犬山城導航
-                </a>
-            </div>
-        </section>
-        
-        <h2>Day 2 行程：祖父江</h2>
-        <section class="timeline-item">
-            <div class="timeline-time">11:15</div>
-            <div class="timeline-card">
-                <div class="card-title">🍂 祖父江 銀杏樹黃葉節</div>
-                <p>
-                    會場在山崎 (BS07) 附近。<br>
-                    **散策地圖：** <span class="action-link" data-modal="day2-map-modal">點擊查看黃葉散策路線圖</span>
-                </p>
-                <a href="http://maps.google.com/?q=祖父江銀杏樹黃葉節" target="_blank" class="map-link">
-                    <span role="img" aria-label="map-pin">🗺️</span> 祖父江會場導航
-                </a>
-            </div>
-        </section>
-        
-    </main>
+            <section class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-card">
+                    <div class="card-title">🏯 犬山城與犬山城下町</div>
+                    <p>
+                        重要備註：門票為 11:00 ~ 17:00 時段。<br>
+                        **住宿：** <span class="action-link" data-modal="hotel-modal">INDIGO 飯店</span>
+                    </p>
+                    <a href="http://googleusercontent.com/maps.google.com/6" target="_blank" class="map-link">
+                        <span role="img" aria-label="map-pin">🗺️</span> 犬山城導航
+                    </a>
+                </div>
+            </section>
+        </div> <div id="day-2" class="day-content hidden">
+            <h2>Day 2 行程：祖父江</h2>
+            
+            <section class="timeline-item">
+                <div class="timeline-time">11:15</div>
+                <div class="timeline-card">
+                    <div class="card-title">🍂 祖父江 銀杏樹黃葉節</div>
+                    <p>
+                        會場在山崎 (BS07) 附近。<br>
+                        **散策地圖：** <span class="action-link" data-modal="day2-map-modal">點擊查看黃葉散策路線圖</span>
+                    </p>
+                    <a href="http://googleusercontent.com/maps.google.com/7" target="_blank" class="map-link">
+                        <span role="img" aria-label="map-pin">🗺️</span> 祖父江會場導航
+                    </a>
+                </div>
+            </section>
+            
+            <section class="timeline-item">
+                <div class="timeline-time">16:00</div>
+                <div class="timeline-card">
+                    <div class="card-title">🏯 名古屋城</div>
+                    <p>開放時間：9:00~16:30。建議從東門進入。</p>
+                </div>
+            </section>
+        </div> </main>
 
     <nav class="bottom-nav">
-        <a href="#day1" class="nav-item active">DAY 1</a>
-        <a href="#day2" class="nav-item">DAY 2</a>
-        <a href="#map" class="nav-item">🗺️ 地圖</a>
-        <a href="#summary" class="nav-item">總表</a>
+        <a href="#day-1" class="nav-item active" data-target="day-1">DAY 1</a>
+        <a href="#day-2" class="nav-item" data-target="day-2">DAY 2</a>
+        <a href="#map" class="nav-item" data-target="map">🗺️ 地圖</a>
+        <a href="#summary" class="nav-item" data-target="summary">總表</a>
     </nav>
 
     <div id="route-modal" class="modal">
