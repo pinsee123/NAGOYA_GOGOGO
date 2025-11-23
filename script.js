@@ -12,19 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
             date: '📅 DAY 2 | 11月25日', 
             location: '📍 稻澤市 🌥️ 13°C', 
             title: '銀杏黃葉與歷史文化',
-            weatherLink: 'https://tenki.jp/leisure/5/26/21040/10days.html' 
+            // 【修正】：更新為稻澤市 (祖父江所在地) 的準確天氣預報
+            weatherLink: 'https://tenki.jp/forecast/5/26/5110/23220/' 
         },
         'day-3': { 
             date: '📅 DAY 3 | 11月26日', 
             location: '📍 長久手市 🌤️ 14°C', 
             title: '吉卜力公園探險日',
-            weatherLink: 'https://tenki.jp/leisure/5/26/161/37531/3hours.html' 
+            weatherLink: 'https://tenki.jp/forecast/5/26/5110/23238/' // 更新為長久手市天氣
         },
         'day-4': { 
             date: '📅 DAY 4 | 11月27日', 
             location: '📍 豊田市 🍂 10°C', 
             title: '香嵐溪紅葉攝影日',
-            weatherLink: 'https://tenki.jp/leisure/5/26/173/3404/10days.html' 
+            weatherLink: 'https://tenki.jp/forecast/5/26/5120/23211/' // 更新為豊田市天氣
         },
         'day-5': { 
             date: '📅 DAY 5 | 11月28日', 
@@ -72,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('active');
         });
         
-        // 【修正點】：這裡是之前導致崩潰的地方，已修正為正確的 .top-nav-tabs
         const activeTab = document.querySelector(`.top-nav-tabs .nav-item[data-target="${targetId}"]`);
         if (activeTab) {
             activeTab.classList.add('active');
@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 3. 更新 Hero Section (文字與連結)
         const data = itineraryData[targetId];
-        // 確保所有元素都存在才執行更新，避免錯誤
         if (data && heroDate && heroLocation && heroTitle && heroLocationLink) {
             heroDate.textContent = data.date;
             heroLocation.textContent = data.location;
