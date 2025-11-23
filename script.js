@@ -13,44 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
             date: '📅 DAY 2 | 11月25日', 
             location: '📍 稻澤市 🌥️ 13°C', 
             title: '銀杏黃葉與歷史文化',
-            weatherLink: 'https://tenki.jp/leisure/5/26/21040/10days.html' // 使用名古屋區域預報
+            weatherLink: 'https://tenki.jp/leisure/5/26/21040/10days.html' 
         },
         // 長久手市 (吉卜力公園)
         'day-3': { 
             date: '📅 DAY 3 | 11月26日', 
             location: '📍 長久手市 🌤️ 14°C', 
             title: '吉卜力公園探險日',
-            weatherLink: 'https://tenki.jp/leisure/5/26/161/37531/3hours.html' // 長久手市文化之家天氣
+            weatherLink: 'https://tenki.jp/leisure/5/26/161/37531/3hours.html' 
         },
         // 豊田市/香嵐溪
         'day-4': { 
             date: '📅 DAY 4 | 11月27日', 
             location: '📍 豊田市 🍂 10°C', 
             title: '香嵐溪紅葉攝影日',
-            weatherLink: 'https://tenki.jp/leisure/5/26/173/3404/10days.html' // 豊田市美術館天氣
+            weatherLink: 'https://tenki.jp/leisure/5/26/173/3404/10days.html' 
         },
         // 中部國際機場
         'day-5': { 
             date: '📅 DAY 5 | 11月28日', 
             location: '📍 中部國際機場 ✈️', 
             title: '返程與機場接駁',
-            weatherLink: 'https://tenki.jp/leisure/airport/5/26/24072/10days.html' // 中部國際機場天氣
+            weatherLink: 'https://tenki.jp/leisure/airport/5/26/24072/10days.html' 
         },
         'summary': { 
             date: '📝 行程總覽', 
             location: '📍 日本名古屋五日遊', 
             title: '行程總覽與重要備註',
-            weatherLink: 'https://tenki.jp/forecast/5/26/' // 愛知縣總覽
+            weatherLink: 'https://tenki.jp/forecast/5/26/' 
         }
     };
     
-    // === 元素選擇器 (新增 heroLocationLink) ===
+    // === 元素選擇器 (已修正 navItems 的選擇器) ===
     const heroDate = document.getElementById('hero-date');
     const heroLocation = document.getElementById('hero-location');
     const heroTitle = document.getElementById('hero-title');
-    const heroLocationLink = document.getElementById('hero-location-link'); // 新增的天氣連結元素
+    const heroLocationLink = document.getElementById('hero-location-link'); 
     
-    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+    // 【關鍵修復】：選擇新的頂部導航標籤
+    const navItems = document.querySelectorAll('.top-nav-tabs .nav-item');
     const dayContents = document.querySelectorAll('.day-content'); 
     const modals = document.querySelectorAll('.modal');
     const actionLinks = document.querySelectorAll('.action-link');
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navItems.forEach(item => {
             item.classList.remove('active');
         });
-        document.querySelector(`.nav-item[data-target="${targetId}"]`).classList.add('active');
+        document.querySelector(`.nav-nav-tabs .nav-item[data-target="${targetId}"]`).classList.add('active');
         
         // 3. 根據 targetId 更新 Hero Section 內容
         const data = itineraryData[targetId];
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroLocation.textContent = data.location;
             heroTitle.textContent = data.title;
             
-            // 【關鍵修正】：更新 Hero Section 頂部連結的 href 屬性
+            // 更新 Hero Section 頂部連結的 href 屬性
             heroLocationLink.href = data.weatherLink; 
         }
 
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === 事件監聽器 (保持不變) ===
     
-    // 底部導航欄切換
+    // 頂部導航欄切換
     navItems.forEach(item => {
         item.addEventListener('click', (event) => {
             event.preventDefault(); 
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // 初始載入時調用一次切換函數
-    const initialActive = document.querySelector('.bottom-nav .nav-item.active');
+    const initialActive = document.querySelector('.top-nav-tabs .nav-item.active');
     if (initialActive) {
         switchDayContent(initialActive.getAttribute('data-target'));
     } else if (dayContents.length > 0) {
