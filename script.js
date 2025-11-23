@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === 行程資料表 (包含天氣連結) ===
+    // === 行程資料表 ===
     const itineraryData = {
         'day-1': { 
             date: '📅 DAY 1 | 11月24日', 
@@ -12,20 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
             date: '📅 DAY 2 | 11月25日', 
             location: '📍 稻澤市 🌥️ 13°C', 
             title: '銀杏黃葉與歷史文化',
-            // 【修正】：更新為稻澤市 (祖父江所在地) 的準確天氣預報
             weatherLink: 'https://tenki.jp/forecast/5/26/5110/23220/' 
         },
         'day-3': { 
             date: '📅 DAY 3 | 11月26日', 
             location: '📍 長久手市 🌤️ 14°C', 
             title: '吉卜力公園探險日',
-            weatherLink: 'https://tenki.jp/forecast/5/26/5110/23238/' // 更新為長久手市天氣
+            weatherLink: 'https://tenki.jp/forecast/5/26/5110/23238/' 
         },
         'day-4': { 
             date: '📅 DAY 4 | 11月27日', 
             location: '📍 豊田市 🍂 10°C', 
             title: '香嵐溪紅葉攝影日',
-            weatherLink: 'https://tenki.jp/forecast/5/26/5120/23211/' // 更新為豊田市天氣
+            weatherLink: 'https://tenki.jp/forecast/5/26/5120/23211/' 
         },
         'day-5': { 
             date: '📅 DAY 5 | 11月28日', 
@@ -47,18 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.getElementById('hero-title');
     const heroLocationLink = document.getElementById('hero-location-link'); 
     
-    // 選擇頂部導航標籤
     const navItems = document.querySelectorAll('.top-nav-tabs .nav-item');
     const dayContents = document.querySelectorAll('.day-content'); 
     const modals = document.querySelectorAll('.modal');
     const actionLinks = document.querySelectorAll('.action-link');
     const closeButtons = document.querySelectorAll('.close-modal-btn');
+    
+    // 【新增】折疊選單 (Accordion) 選擇器
+    const toggleHeaders = document.querySelectorAll('.toggle-header');
 
 
     // === 核心切換函數 ===
     function switchDayContent(targetId) {
-        
-        // 1. 顯示/隱藏內容區塊
         dayContents.forEach(content => {
             content.classList.add('hidden');
         });
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             targetContent.classList.remove('hidden');
         }
 
-        // 2. 更新導航按鈕狀態
         navItems.forEach(item => {
             item.classList.remove('active');
         });
@@ -78,23 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
             activeTab.classList.add('active');
         }
         
-        // 3. 更新 Hero Section (文字與連結)
         const data = itineraryData[targetId];
         if (data && heroDate && heroLocation && heroTitle && heroLocationLink) {
             heroDate.textContent = data.date;
             heroLocation.textContent = data.location;
             heroTitle.textContent = data.title;
-            
-            // 更新連結
             heroLocationLink.href = data.weatherLink; 
         }
 
-        // 4. 滾動到頂部
         window.scrollTo(0, 0); 
     }
 
     // === 事件監聽器 ===
     
+    // 1. 導航切換
     navItems.forEach(item => {
         item.addEventListener('click', (event) => {
             event.preventDefault(); 
@@ -105,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Modal 相關邏輯
+    // 2. Modal 邏輯
     actionLinks.forEach(link => { 
         link.addEventListener('click', (event) => {
             event.preventDefault();
@@ -127,6 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
                 modal.classList.remove('active');
+            }
+        });
+    });
+    
+    // 3. 【新增】折疊選單互動邏輯
+    toggleHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            // 找到下一個兄弟元素 (就是內容區塊)
+            const content = header.nextElementSibling;
+            if (content) {
+                content.classList.toggle('open');
             }
         });
     });
