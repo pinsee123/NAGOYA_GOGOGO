@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f7f6;
-    padding-bottom: 0; /* 移除底部空間 */
+    padding-bottom: 0;
     color: #333;
     -webkit-overflow-scrolling: touch;
 }
@@ -21,9 +21,9 @@ h2 {
     display: none !important;
 }
 
-/* 頂部 Hero Section - 修正點：已恢復楓葉背景，並保留 Flexbox 佈局 */
+/* 頂部 Hero Section */
 .hero-section {
-    background-image: url('images/maple_background2.jpg'); /* 圖片路徑 */
+    background-image: url('images/maple_background2.jpg');
     background-size: cover;
     background-position: center;
     min-height: 180px; 
@@ -32,24 +32,21 @@ h2 {
     padding: 20px 20px 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    
-    /* 確保文字在圖片上清晰可見 */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.9); 
     
-    /* 使用 Flexbox 堆疊內容 */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 1. 日期點選 (置頂 - 放大) */
+/* 1. 日期點選 */
 .date-info {
     font-size: 1.6em; 
     font-weight: 800;
     margin-bottom: 15px;
 }
 
-/* 2. 天氣/地點連結 (居中 - 突顯天氣資訊) */
+/* 2. 天氣/地點連結 */
 .hero-location-link {
     text-decoration: none; 
     color: inherit;
@@ -60,15 +57,14 @@ h2 {
     font-weight: bold;
 }
 
-/* 3. 每日詳細內容/標題 (置底) */
+/* 3. 每日詳細內容/標題 */
 h1 {
     font-size: 1.3em; 
     margin: 0 0 15px 0;
     font-weight: 600;
 }
 
-
-/* 【關鍵修正】：頂部橫向導航標籤 */
+/* 4. 頂部橫向導航標籤 */
 .top-nav-tabs {
     display: flex;
     justify-content: space-around;
@@ -76,7 +72,7 @@ h1 {
     max-width: 500px;
     margin-top: 10px;
     margin-bottom: 10px;
-    overflow-x: auto; /* 允許橫向滑動 */
+    overflow-x: auto;
     padding-bottom: 5px;
     -webkit-overflow-scrolling: touch;
 }
@@ -88,17 +84,16 @@ h1 {
     text-decoration: none;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px; /* 圓角膠囊樣式 */
+    border-radius: 20px;
     font-size: 0.9em;
     transition: all 0.2s;
 }
 .top-nav-tabs .nav-item.active {
-    background-color: #E33845; /* 紅色高亮，參考圖中 Day 2 樣式 */
+    background-color: #E33845;
     border-color: #E33845;
     font-weight: bold;
     transform: scale(1.05);
 }
-
 
 /* Smart Timeline 容器與垂直線 */
 .timeline-container {
@@ -141,7 +136,7 @@ h1 {
     box-shadow: 0 0 0 2px #007bff;
 }
 
-/* 右側活動卡片 (樣式保持不變) */
+/* 右側活動卡片 */
 .timeline-card {
     background: white;
     flex-grow: 1;
@@ -157,7 +152,48 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* 連結樣式 (保持不變) */
+/* --- 【新增】折疊選單 (Accordion) 樣式 --- */
+.toggle-item {
+    margin-top: 8px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.toggle-header {
+    background-color: #f9f9f9;
+    padding: 10px;
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle-header:hover {
+    background-color: #f0f0f0;
+}
+.toggle-content {
+    display: none; /* 預設隱藏 */
+    padding: 10px;
+    background-color: #fff;
+}
+.toggle-content.open {
+    display: block; /* 展開時顯示 */
+}
+.toggle-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.toggle-content li {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
+/* --- 結束折疊選單樣式 --- */
+
+
+/* 連結樣式 */
 .map-link {
     display: block;
     margin-top: 10px;
@@ -177,8 +213,7 @@ h1 {
     text-decoration: underline;
 }
 
-
-/* Modal 彈窗 (保持不變) */
+/* Modal 彈窗 */
 .modal {
     display: none;
     position: fixed;
