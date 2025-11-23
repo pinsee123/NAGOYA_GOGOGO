@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     // === 元素選擇器 ===
-    // 關鍵修正：確保這些 ID 存在於 index.html 中
     const heroDate = document.getElementById('hero-date');
     const heroLocation = document.getElementById('hero-location');
     const heroTitle = document.getElementById('hero-title');
