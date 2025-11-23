@@ -34,7 +34,7 @@ h2 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     
     /* 確保文字在圖片上清晰可見 */
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
 .location-info {
     font-size: 1.1em;
@@ -76,7 +76,6 @@ h1 {
     flex-shrink: 0;
     width: 80px;
     padding-top: 5px;
-    font-weight: bold;
     color: #007bff;
     text-align: right;
     position: relative;
@@ -110,6 +109,8 @@ h1 {
     color: #333;
     margin-bottom: 10px;
 }
+
+/* Google Map 導航連結 */
 .map-link {
     display: block;
     margin-top: 10px;
@@ -118,13 +119,21 @@ h1 {
     font-weight: 500;
 }
 
-/* 互動元素 */
+/* 互動元素 - Modal 觸發器 */
 .action-link {
     color: #ffc107;
     font-weight: 600;
     text-decoration: underline;
     cursor: pointer;
 }
+
+/* 新增：地下鐵時刻表連結樣式 */
+.subway-link {
+    color: #007bff; /* 使用主題藍色 */
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 
 /* 底部導航欄 */
 .bottom-nav {
