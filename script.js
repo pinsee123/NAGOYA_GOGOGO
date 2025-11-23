@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === 行程資料表 (Hero Section 更新的數據源，已加入 weatherLink) ===
+    // === 行程資料表 (包含天氣連結) ===
     const itineraryData = {
-        // 名古屋市 (犬山城、榮商圈)
         'day-1': { 
             date: '📅 DAY 1 | 11月24日', 
             location: '📍 名古屋市 ☀️ 15°C', 
@@ -15,21 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
             title: '銀杏黃葉與歷史文化',
             weatherLink: 'https://tenki.jp/leisure/5/26/21040/10days.html' 
         },
-        // 長久手市 (吉卜力公園)
         'day-3': { 
             date: '📅 DAY 3 | 11月26日', 
             location: '📍 長久手市 🌤️ 14°C', 
             title: '吉卜力公園探險日',
             weatherLink: 'https://tenki.jp/leisure/5/26/161/37531/3hours.html' 
         },
-        // 豊田市/香嵐溪
         'day-4': { 
             date: '📅 DAY 4 | 11月27日', 
             location: '📍 豊田市 🍂 10°C', 
             title: '香嵐溪紅葉攝影日',
             weatherLink: 'https://tenki.jp/leisure/5/26/173/3404/10days.html' 
         },
-        // 中部國際機場
         'day-5': { 
             date: '📅 DAY 5 | 11月28日', 
             location: '📍 中部國際機場 ✈️', 
@@ -44,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // === 元素選擇器 (已修正 navItems 的選擇器) ===
+    // === 元素選擇器 ===
     const heroDate = document.getElementById('hero-date');
     const heroLocation = document.getElementById('hero-location');
     const heroTitle = document.getElementById('hero-title');
     const heroLocationLink = document.getElementById('hero-location-link'); 
     
-    // 【關鍵修復】：選擇新的頂部導航標籤
+    // 選擇頂部導航標籤
     const navItems = document.querySelectorAll('.top-nav-tabs .nav-item');
     const dayContents = document.querySelectorAll('.day-content'); 
     const modals = document.querySelectorAll('.modal');
@@ -58,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButtons = document.querySelectorAll('.close-modal-btn');
 
 
-    // === 核心切換函數：同步更新 Hero Section 及內容 ===
+    // === 核心切換函數 ===
     function switchDayContent(targetId) {
         
-        // 1. 隱藏所有內容區塊，顯示目標區塊
+        // 1. 顯示/隱藏內容區塊
         dayContents.forEach(content => {
             content.classList.add('hidden');
         });
@@ -71,42 +67,46 @@ document.addEventListener('DOMContentLoaded', () => {
             targetContent.classList.remove('hidden');
         }
 
-        // 2. 更新底部導航欄的 active 狀態
+        // 2. 更新導航按鈕狀態
         navItems.forEach(item => {
             item.classList.remove('active');
         });
-        document.querySelector(`.nav-nav-tabs .nav-item[data-target="${targetId}"]`).classList.add('active');
         
-        // 3. 根據 targetId 更新 Hero Section 內容
+        // 【修正點】：這裡是之前導致崩潰的地方，已修正為正確的 .top-nav-tabs
+        const activeTab = document.querySelector(`.top-nav-tabs .nav-item[data-target="${targetId}"]`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+        }
+        
+        // 3. 更新 Hero Section (文字與連結)
         const data = itineraryData[targetId];
+        // 確保所有元素都存在才執行更新，避免錯誤
         if (data && heroDate && heroLocation && heroTitle && heroLocationLink) {
             heroDate.textContent = data.date;
             heroLocation.textContent = data.location;
             heroTitle.textContent = data.title;
             
-            // 更新 Hero Section 頂部連結的 href 屬性
+            // 更新連結
             heroLocationLink.href = data.weatherLink; 
         }
 
-        // 4. 滾動到頁面頂部
+        // 4. 滾動到頂部
         window.scrollTo(0, 0); 
     }
 
-    // === 事件監聽器 (保持不變) ===
+    // === 事件監聽器 ===
     
-    // 頂部導航欄切換
     navItems.forEach(item => {
         item.addEventListener('click', (event) => {
             event.preventDefault(); 
             const targetId = item.getAttribute('data-target');
-            
             if (targetId) {
                 switchDayContent(targetId);
             }
         });
     });
 
-    // Modal 開啟邏輯
+    // Modal 相關邏輯
     actionLinks.forEach(link => { 
         link.addEventListener('click', (event) => {
             event.preventDefault();
@@ -118,14 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Modal 關閉邏輯
     closeButtons.forEach(button => { 
         button.addEventListener('click', () => {
             button.closest('.modal').classList.remove('active');
         });
     });
 
-    // Modal 背景點擊關閉邏輯
     modals.forEach(modal => { 
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
@@ -134,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // 初始載入時調用一次切換函數
+    // 初始載入
     const initialActive = document.querySelector('.top-nav-tabs .nav-item.active');
     if (initialActive) {
         switchDayContent(initialActive.getAttribute('data-target'));
