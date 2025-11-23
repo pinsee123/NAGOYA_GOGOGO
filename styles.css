@@ -21,13 +21,20 @@ h2 {
     display: none !important;
 }
 
-/* 頂部 Hero Section */
+/* 頂部 Hero Section - 修正點：已加入楓葉背景圖片 */
 .hero-section {
-    background-color: #007bff;
+    background-image: url('images/maple_background.jpg'); /* 圖片路徑 */
+    background-size: cover;
+    background-position: center;
+    min-height: 180px; 
+    
     color: white;
     padding: 40px 20px 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    
+    /* 確保文字在圖片上清晰可見 */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 .location-info {
     font-size: 1.1em;
