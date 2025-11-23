@@ -21,16 +21,20 @@ h2 {
     display: none !important;
 }
 
-/* 頂部 Hero Section - 【設計核心：深色背景，移除圖片，使用 Flexbox】 */
+/* 頂部 Hero Section - 修正點：已恢復楓葉背景，並保留 Flexbox 佈局 */
 .hero-section {
-    background-color: #3A004D; /* 參考圖中的深色/酒紅色 */
+    background-image: url('images/maple_background2.jpg'); /* 圖片路徑 */
+    background-size: cover;
+    background-position: center;
+    min-height: 180px; 
+    
     color: white;
     padding: 20px 20px 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     
-    /* 確保文字在深色背景上清晰可見 */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); 
+    /* 確保文字在圖片上清晰可見 */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9); 
     
     /* 使用 Flexbox 堆疊內容 */
     display: flex;
@@ -50,7 +54,7 @@ h2 {
     text-decoration: none; 
     color: inherit;
     margin-bottom: 10px;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 .location-info {
     font-weight: bold;
@@ -58,7 +62,7 @@ h2 {
 
 /* 3. 每日詳細內容/標題 (置底) */
 h1 {
-    font-size: 1.3em; /* 略小，讓日期更突出 */
+    font-size: 1.3em; 
     margin: 0 0 15px 0;
     font-weight: 600;
 }
